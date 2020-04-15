@@ -1,14 +1,17 @@
 package app.todo;
 
+
 import javax.persistence.*;
 
-//My Entity class where that will be generated in to the databse through TodoRepositoryclassen//
-
+//My Entity class,  that will be generated in to the databse through TodoRepository, the object of this class will be passed around the app through methods.
+@Entity
 public class Todo {
 
-    int id;
-    String text;
-    Boolean active;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String text;
+    private boolean active;
 
     public int getId() {
         return id;
@@ -26,11 +29,11 @@ public class Todo {
         this.text = text;
     }
 
-    public Boolean getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 }
