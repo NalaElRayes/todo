@@ -39,8 +39,8 @@ public class TodoService {
         List<Todo> todos = new ArrayList<>();
         todoRepository.findAll().forEach(todos::add);
 
-        todos.stream().filter(todo -> todo.getActive() == true).collect(Collectors.toList());
-        return todos;
+        return todos.stream().filter(todo -> todo.getActive() == true).collect(Collectors.toList());
+
     }
 
     //Deletes an object through its id
