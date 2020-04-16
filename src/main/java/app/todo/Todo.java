@@ -3,10 +3,11 @@ package app.todo;
 
 import javax.persistence.*;
 
-//My Entity class,  that will be generated in to the databse through TodoRepository, the object of this class will be passed around the app through methods.
+//My Entity class, that will be generated in to an object and will be passed to the databse. The object of this class will be passed around the app through methods.
 @Entity
 public class Todo {
 
+    //Generates the colums in my database. The id will be self generated with its annotation.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
