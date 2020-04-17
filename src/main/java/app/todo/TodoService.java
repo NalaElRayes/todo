@@ -2,6 +2,7 @@ package app.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,5 +52,23 @@ public class TodoService {
     //takes an object and sets it boolean value to true or false
     public void updateActive(int id, Todo todo) {
         todoRepository.save(todo);
+    }
+
+    //Method that filters every object that has its boolean to true and calls the deleteTodo function in the class.
+    public void deleteActiveTodo() {
+        List<Todo> todos = new ArrayList<>();
+
+        todoRepository.findAll().forEach(todos :: add);
+        todos.stream().filter(todo -> todo.getActive() == true).forEach(todo -> deleteTodo(todo.getId()));
+    }
+
+    //Sets all object booleans too true in the list and returns it. 
+    public List<Todo> setAllTodosToActive() {
+        List<Todo> todos = new ArrayList<>();
+
+        todoRepository.findAll().forEach(todos :: add);
+
+        todos.forEach(todo -> todo.setActive(true));
+        return todos;
     }
 }

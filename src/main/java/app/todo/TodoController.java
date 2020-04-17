@@ -40,12 +40,23 @@ public class TodoController {
         return todoService.getAllActive();
     }
 
-    /* Takes in a id of an object through its id and changes its boolean to true or false. The user choose*/
+    /* Takes in a an object, through its id and changes its boolean to true or false. The user choose*/
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public void updateActive(@RequestBody Todo todo, @PathVariable int id) {
         todoService.updateActive(id, todo);
     }
 
+    //Deletes every to do in the list that has its boolean to true
+    @DeleteMapping("/delete/active")
+    public void deleteActiveTodo(){
+        todoService.deleteActiveTodo();
+    }
 
+    //Post method that gets posted through url, calles up on a method in the service class.
+    @PostMapping ("/allactive")
+    public List<Todo> setAllTodosToActive(){
+        todoService.setAllTodosToActive();
+        return todoService.setAllTodosToActive();
+    }
 
 }
