@@ -59,4 +59,9 @@ public class TodoController {
         return todoService.setAllTodosToActive();
     }
 
+   /* @GetMapping("/itemsleft")
+    public List<Todo> itemsLeft(){
+        todoService.itemsLeft();
+    }*/
+
 }

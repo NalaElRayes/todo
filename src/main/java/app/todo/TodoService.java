@@ -62,13 +62,19 @@ public class TodoService {
         todos.stream().filter(todo -> todo.getActive() == true).forEach(todo -> deleteTodo(todo.getId()));
     }
 
-    //Sets all object booleans too true in the list and returns it. 
+    //Sets all object booleans too true in the list and returns it.
     public List<Todo> setAllTodosToActive() {
         List<Todo> todos = new ArrayList<>();
 
         todoRepository.findAll().forEach(todos :: add);
 
         todos.forEach(todo -> todo.setActive(true));
+        return todos;
+    }
+
+    public List<Todo> itemsLeft() {
+        List <Todo> todos = new ArrayList<>();
+
         return todos;
     }
 }
