@@ -40,6 +40,11 @@ public class TodoController {
         return todoService.getAllActive();
     }
 
+    @GetMapping("/allNotActive")
+    public List<Todo> getAllNotActive(){
+        return todoService.getAllNotActive();
+    }
+
     /* Takes in a an object, through its id and changes its boolean to true or false. The user choose*/
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public void updateActive(@RequestBody Todo todo, @PathVariable int id) {
@@ -58,10 +63,5 @@ public class TodoController {
         todoService.setAllTodosToActive();
         return todoService.setAllTodosToActive();
     }
-
-   /* @GetMapping("/itemsleft")
-    public List<Todo> itemsLeft(){
-        todoService.itemsLeft();
-    }*/
 
 }

@@ -43,6 +43,14 @@ public class TodoService {
         return todos.stream().filter(todo -> todo.getActive() == true).collect(Collectors.toList());
 
     }
+    //Creates an array of all objects and filters the objects with true booleans out. Returns an list with objects of the boolen false. 
+    public List<Todo> getAllNotActive(){
+        List<Todo> todos = new ArrayList<>();
+        todoRepository.findAll().forEach(todos::add);
+
+        return todos.stream().filter(todo -> todo.getActive() == false).collect(Collectors.toList());
+
+    }
 
     //Deletes an object through its id
     public void deleteTodo(int id) {
@@ -72,9 +80,4 @@ public class TodoService {
         return todos;
     }
 
-    public List<Todo> itemsLeft() {
-        List <Todo> todos = new ArrayList<>();
-
-        return todos;
-    }
 }
