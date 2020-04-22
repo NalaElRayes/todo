@@ -33,9 +33,6 @@ Method deleteActiveTodo()
 Deletes all the objects with boolean set to true. 
 Set the request to delete, add the "/delete/active" url to the defeult url and press send. 
 
-Method setAllTodosToActive()
-Sets all the objects boolean active to true. 
-Set the request to post, add url "/allactive" to the defeult url and send. 
 
 I have choosen to use Hibernate for my data base connectivity. Since it is very hands on and simply to use. Hibernate lets me speak with the databse through java methods. I could have used a jdbc driver and write and define sql statments but that would have resultad in so much more code. 
 
