@@ -2,24 +2,34 @@ package app.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 //Controller class which has all the endpoints that will comunicate with the servise class through the Autowired annotation.
-@RestController
-@RequestMapping(value = "/todo")
+@Controller
 public class TodoController {
 
     @Autowired
     private TodoService todoService;
 
-    //Creates a todoObject
-    @PostMapping
-    public Todo createTodo(@RequestParam Map<String, String> body){
-         return todoService.createTodo(body.get("text"));
+    //Start webpage, which will renderre all the created objects
+    @GetMapping("/todo")
+    public String startPage(Model model){
+        List<Todo> listTodo = todoService.getAll();
+        model.addAttribute("todos", listTodo);
+        return "todo";
     }
+
+    //Creates a todoObject, takes one parameter and sends it to the service class.
+    @PostMapping("/create")
+    public String saveTodo(@RequestParam("t1") String text){
+        todoService.createTodo(text);
+        return "redirect:todo";
+    }
+
 
     /*returns a list of all todos*/
     @GetMapping
