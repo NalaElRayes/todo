@@ -43,7 +43,7 @@ public class TodoService {
         return todos.stream().filter(todo -> todo.getActive() == true).collect(Collectors.toList());
 
     }
-    //Creates an array of all objects and filters the objects with true booleans out. Returns an list with objects of the boolen false. 
+    //Creates an array of all objects and filters the objects with true booleans out. Returns an list with objects of the boolen false.
     public List<Todo> getAllNotActive(){
         List<Todo> todos = new ArrayList<>();
         todoRepository.findAll().forEach(todos::add);
