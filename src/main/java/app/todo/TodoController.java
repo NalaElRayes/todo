@@ -57,11 +57,6 @@ public class TodoController {
         todoService.deleteActiveTodo();
     }
 
-    //Post method that gets posted through url, calles up on a method in the service class.
-    @PostMapping ("/allactive")
-    public List<Todo> setAllTodosToActive(){
-        todoService.setAllTodosToActive();
-        return todoService.setAllTodosToActive();
-    }
+
 
 }
