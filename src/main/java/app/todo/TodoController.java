@@ -38,17 +38,6 @@ public class TodoController {
         return "redirect:todo";
     }
 
-    /*Shows all objects with the boolean true in a list*/
-    @GetMapping("/allActive")
-    public List<Todo> getAllActive(){
-        return todoService.getAllActive();
-    }
-
-    @GetMapping("/allNotActive")
-    public List<Todo> getAllNotActive(){
-        return todoService.getAllNotActive();
-    }
-
     /* Takes in a an object, through its id and changes its boolean to true or false. The user choose*/
     @RequestMapping(value = "/api",method = RequestMethod.PUT,produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateItem(@RequestBody Todo todo){
@@ -70,6 +59,21 @@ public class TodoController {
     public String deleteAllCompleted(){
         todoService.deleteActiveTodo();
         return "redirect:todo";
+    }
+
+    /*Shows all objects with the boolean true in a list*/
+    @PostMapping("/active")
+    public String active(Model model){
+        List<Todo> listTodo = todoService.getAllNotActive();
+        model.addAttribute("todos", listTodo);
+        return "todo";
+    }
+
+    @PostMapping("/showcompleted")
+    public String showCompleted(Model model){
+        List<Todo> listTodo = todoService.getAllActive();
+        model.addAttribute("todos", listTodo);
+        return "todo";
     }
 
 }

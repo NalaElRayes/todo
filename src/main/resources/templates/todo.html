@@ -64,6 +64,16 @@
             <button type="submit">Clear Completed</button>
         </form>
 
+        <!---Show Active button-->
+        <form th:action="@{/active}" method="post">
+            <button type="submit">Active</button>
+        </form>
+
+        <!--Show Completed button-->
+        <form th:action="@{/showcompleted}" method="post">
+            <button type="submit">Completed</button>
+        </form>
+
     </div>
 
 </body>
