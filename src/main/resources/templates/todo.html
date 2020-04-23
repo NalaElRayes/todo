@@ -26,55 +26,62 @@
 </head>
 <body>
 
-    <form th:action="@{/create}" method="post">
-        <div id="input">
-            <input type="text" placeholder="Write a todo" name="t1">
+    <div id="container">
+
+        <div id="todoHeader">
+            <h1>TODO</h1>
         </div>
-    </form>
 
-    <th:block th:each="todo : ${todos}">
-        <div id="loop">
-
-            <div>
-                <label class="checkbox">
-                    <input class="box" type="checkbox" onChange="valueChange(this)" th:name="${todo.text}" th:value="${todo.id}" th:checked="${todo.active}"/>
-                    <span th:text="${todo.text}">Text</span>
-                </label>
+        <form th:action="@{/create}" method="post">
+            <div id="input">
+                <input type="text" placeholder="Write a todo" name="t1">
             </div>
+        </form>
 
-            <div>
-                <form th:action="@{/deleteitem}" method="post">
-                    <input type="hidden" name="id" th:value="${todo.id}" />
-                    <button id="deleteButton" type="submit">Delete</button>
-                </form>
+        <th:block th:each="todo : ${todos}">
+            <div id="loop">
+
+                <div>
+                    <label class="checkbox">
+                        <input class="box" type="checkbox" onChange="valueChange(this)" th:name="${todo.text}" th:value="${todo.id}" th:checked="${todo.active}"/>
+                        <span th:text="${todo.text}">Text</span>
+                    </label>
+                </div>
+
+                <div>
+                    <form th:action="@{/deleteitem}" method="post">
+                        <input type="hidden" name="id" th:value="${todo.id}" />
+                        <button id="deleteButton" type="submit">Delete</button>
+                    </form>
+                </div>
+
             </div>
+        </th:block>
+
+        <div id="bottomButtons">
+
+            <!---Show all button-->
+            <form th:action="@{/all}" method="post">
+                <button type="submit">Show all</button>
+            </form>
+
+            <!-- Delete all completeted objects-->
+            <form th:action="@{/deleteallcompleted}" method="post">
+                <button type="submit">Clear Completed</button>
+            </form>
+
+            <!---Show Active button-->
+            <form th:action="@{/active}" method="post">
+                <button type="submit">Active</button>
+            </form>
+
+            <!--Show Completed button-->
+            <form th:action="@{/showcompleted}" method="post">
+                <button type="submit">Completed</button>
+            </form>
 
         </div>
-    </th:block>
 
-    <div id="bottomButtons">
-
-        <!---Show all button-->
-        <form th:action="@{/all}" method="post">
-            <button type="submit">Show all</button>
-        </form>
-
-        <!-- Delete all completeted objects-->
-        <form th:action="@{/deleteallcompleted}" method="post">
-            <button type="submit">Clear Completed</button>
-        </form>
-
-        <!---Show Active button-->
-        <form th:action="@{/active}" method="post">
-            <button type="submit">Active</button>
-        </form>
-
-        <!--Show Completed button-->
-        <form th:action="@{/showcompleted}" method="post">
-            <button type="submit">Completed</button>
-        </form>
-
-    </div>
-
+    </div> <!--End container div !-->
 </body>
 </html>
