@@ -1,6 +1,7 @@
 package app.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,9 +58,9 @@ public class TodoController {
     }
 
     /* Takes in a an object, through its id and changes its boolean to true or false. The user choose*/
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public void updateActive(@RequestBody Todo todo, @PathVariable int id) {
-        todoService.updateActive(id, todo);
+    @RequestMapping(value = "/api",method = RequestMethod.PUT,produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updateItem(@RequestBody Todo todo){
+        todoService.updateActive(todo);
     }
 
     //Deletes every to do in the list that has its boolean to true

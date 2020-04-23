@@ -58,7 +58,7 @@ public class TodoService {
     }
 
     //takes an object and sets it boolean value to true or false
-    public void updateActive(int id, Todo todo) {
+    public void updateActive(Todo todo) {
         todoRepository.save(todo);
     }
 

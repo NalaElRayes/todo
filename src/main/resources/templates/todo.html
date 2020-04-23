@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
     <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script>
+
+        valueChange = function(item){
+            var id = item.value;
+            var text = item.name;
+            var active = item.checked;
+
+            const data={id, text, active};
+
+            const options ={
+                method: 'PUT',
+                headers:{'Content-Type': 'application/json;charset=utf8'},
+                body: JSON.stringify(data)
+            };
+            fetch('/api', options);
+        }
+    </script>
+
 </head>
 <body>
 
@@ -17,7 +37,7 @@
 
             <div>
                 <label class="checkbox">
-                    <input class="box" type="checkbox" th:name="${todo.text}" th:value="${todo.id}" th:checked="${todo.active}"/>
+                    <input class="box" type="checkbox" onChange="valueChange(this)" th:name="${todo.text}" th:value="${todo.id}" th:checked="${todo.active}"/>
                     <span th:text="${todo.text}">Text</span>
                 </label>
             </div>
