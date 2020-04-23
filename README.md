@@ -1,6 +1,8 @@
 # todo
 Backend project
 
+
+
 My entity class is an information for the database of what my schema will be named and what primary key it has and also which colums it will have. The database datasourse and ddl is set to create. Which means every time I start my applikation over it will create the schema again and it will be reseted.  
 All the request that will be requested will go through the restapis in the controller class. In the Controller class it will later call the methods on the service class.In the service class is where all the methods is defined for saving, deleting or retriving from the mysql database through JPA Hibernate.  The service classes methods will be called on the repository interface which is an interrface that extends the CrudRepository class. This class has all the methods that talks to the database. And thats why we have an instence of the repository class in the service class. 
 Spring boot has saying "convention over configuration". Thats why there is no creation of the classes with the new keyword. Springs takes care of that through the annotation @Autowired. Which is used in the controller-, service- and Repository class.
@@ -34,7 +36,7 @@ Deletes all the objects with boolean set to true.
 Set the request to delete, add the "/delete/active" url to the defeult url and press send. 
 
 
-I have choosen to use Hibernate for my data base connectivity. Since it is very hands on and simply to use. Hibernate lets me speak with the databse through java methods. I could have used a jdbc driver and write and define sql statments but that would have resultad in so much more code. 
+I have choosen to use Hibernate for my data base connectivity. Since it is very hands on and simply to use. Hibernate lets me speak with the databse through java methods that is implemented in the crudrepositroy class that is extended from the repository interface. Hibernate is a cleancode way to avoid boilerplate code. I could have used a jdbc driver or spring jpa and write and define sql statments but that would have resultad in so much more code. 
 
 
 
