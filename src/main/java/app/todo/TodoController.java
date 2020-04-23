@@ -69,6 +69,15 @@ public class TodoController {
         todoService.deleteActiveTodo();
     }
 
+    //Buttons
+    //See all todoes
+    @PostMapping("/all")
+    public String all(Model model){
+        return "redirect:todo";
+    }
+
+
+
 
 
 }
