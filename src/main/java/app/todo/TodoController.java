@@ -31,14 +31,6 @@ public class TodoController {
         return "redirect:todo";
     }
 
-
-    /*returns a list of all todos*/
-    @GetMapping
-    public List<Todo> getList(){
-        return todoService.getAll();
-
-    }
-
     /*takes an id of an object and deletes it. */
     @PostMapping("/deleteitem")
     public String deleteItem(@RequestParam int id){
@@ -63,21 +55,21 @@ public class TodoController {
         todoService.updateActive(todo);
     }
 
-    //Deletes every to do in the list that has its boolean to true
-    @DeleteMapping("/delete/active")
-    public void deleteActiveTodo(){
-        todoService.deleteActiveTodo();
-    }
 
     //Buttons
+
     //See all todoes
     @PostMapping("/all")
     public String all(Model model){
         return "redirect:todo";
     }
 
-
-
-
+    //Deletes every to do in the list that has its boolean to true
+    //Delete all checked (true) todoes
+    @PostMapping("/deleteallcompleted")
+    public String deleteAllCompleted(){
+        todoService.deleteActiveTodo();
+        return "redirect:todo";
+    }
 
 }
