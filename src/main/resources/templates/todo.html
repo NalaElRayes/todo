@@ -12,6 +12,26 @@
         </div>
     </form>
 
+    <th:block th:each="todo : ${todos}">
+        <div id="loop">
+
+            <div>
+                <label class="checkbox">
+                    <input class="box" type="checkbox" th:name="${todo.text}" th:value="${todo.id}" th:checked="${todo.active}"/>
+                    <span th:text="${todo.text}">Text</span>
+                </label>
+            </div>
+
+            <div>
+                <form th:action="@{/deleteitem}" method="post">
+                    <input type="hidden" name="id" th:value="${todo.id}" />
+                    <button id="deleteButton" type="submit">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    </th:block>
+
 
 
 </body>

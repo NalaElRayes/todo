@@ -39,9 +39,10 @@ public class TodoController {
     }
 
     /*takes an id of an object and deletes it. */
-    @DeleteMapping("/{id}")
-    public void deleteTodo(@PathVariable int id) {
+    @PostMapping("/deleteitem")
+    public String deleteItem(@RequestParam int id){
         todoService.deleteTodo(id);
+        return "redirect:todo";
     }
 
     /*Shows all objects with the boolean true in a list*/
